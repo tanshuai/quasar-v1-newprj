@@ -75,3 +75,9 @@ typings/
 # FuseBox cache
 .fusebox/
 .DS_Store
+
+# Quasar core related directories
+.quasar
+/dist
+/public/config
+
