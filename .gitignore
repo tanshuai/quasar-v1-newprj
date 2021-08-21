@@ -81,3 +81,5 @@ typings/
 /dist
 /public/config
 
+.quasar/client-entry.js
+.quasar/electron/electron-main.js
