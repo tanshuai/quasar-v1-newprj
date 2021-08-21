@@ -7,7 +7,8 @@
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "postinstall": "node ./node_modules/symlink-dir/dist/cli.js node_modules/@chiflix/electron node_modules/electron"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
@@ -19,7 +20,9 @@
     "@quasar/app": "^2.0.0",
     "babel-eslint": "^10.0.1",
     "devtron": "^1.4.0",
-    "electron": "^9.0.0",
+    "symlink-dir": "^5.0.1",
+
+    "@chiflix/electron": "^7.3.3",
     "electron-debug": "^3.0.1",
     "electron-devtools-installer": "^3.0.0",
     "electron-packager": "^14.1.1",
@@ -30,6 +33,7 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-vue": "^7.7.0",
     "eslint-webpack-plugin": "^2.4.0"
+    
   },
   "browserslist": [
     "last 10 Chrome versions",
