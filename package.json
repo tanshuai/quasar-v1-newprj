@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
+    "@quasar/quasar-app-extension-testing-e2e-webdriver": "^1.0.0-beta.9",
     "babel-eslint": "^10.0.1",
     "devtron": "^1.4.0",
     "electron": "^9.0.0",
