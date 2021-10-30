@@ -1,0 +1,13 @@
+diff --git a/node_modules/@quasar/app/lib/electron/index.js b/node_modules/@quasar/app/lib/electron/index.js
+index 1b5152e..67499ac 100644
+--- a/node_modules/@quasar/app/lib/electron/index.js
++++ b/node_modules/@quasar/app/lib/electron/index.js
+@@ -203,7 +203,7 @@ class ElectronRunner {
+         }
+         else { // else it wasn't killed by us
+           warn()
+-          fatal('Electron process was killed. Exiting...\n')
++          warn('Electron process was killed. Exiting...\n')
+         }
+       }
+     )
