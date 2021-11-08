@@ -1,8 +1,52 @@
 diff --git a/node_modules/@quasar/app/lib/electron/index.js b/node_modules/@quasar/app/lib/electron/index.js
-index 1b5152e..67499ac 100644
+index 1b5152e..64e02cc 100644
 --- a/node_modules/@quasar/app/lib/electron/index.js
 +++ b/node_modules/@quasar/app/lib/electron/index.js
-@@ -203,7 +203,7 @@ class ElectronRunner {
+@@ -14,6 +14,7 @@ class ElectronRunner {
+   constructor () {
+     this.pid = 0
+     this.watcher = null
++    this.spectron_mode = false
+   }
+ 
+   init () {}
+@@ -21,6 +22,12 @@ class ElectronRunner {
+   async run (quasarConfFile, argv) {
+     const url = quasarConfFile.quasarConf.build.APP_URL
+ 
++    
++    if(argv.spectron) {
++      log('Building main Electron with Spectron: '+argv.spectron)
++      this.spectron_mode = true
++    }
++    
+     if (this.pid) {
+       if (this.url !== url) {
+         await this.stop()
+@@ -60,8 +67,10 @@ class ElectronRunner {
+         }
+ 
+         await this.__stopElectron()
++        
+         this.__startElectron(argv._)
+         
++
+         resolve()
+       })
+ 
+@@ -184,6 +193,11 @@ class ElectronRunner {
+   }
+ 
+   __startElectron (extraParams) {
++
++    if(this.spectron_mode) {
++      log(`Ignoring boot up Electron for Spectron`)
++      return
++    }
+     log(`Booting up Electron process...`)
+     this.pid = spawn(
+       getPackage('electron'),
+@@ -203,7 +217,7 @@ class ElectronRunner {
          }
          else { // else it wasn't killed by us
            warn()
